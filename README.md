@@ -6,7 +6,7 @@
 
 **Project Leads:**
 * @alarcj
-
+* @grichardson
 
 ## Tutorials by Project
 * [Assemble](https://github.com/Data4Democracy/assemble)
