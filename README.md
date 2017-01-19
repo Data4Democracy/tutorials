@@ -1,5 +1,12 @@
 # Tutorials
-A place for tutorials relevant to D4D projects.
+
+**Slack:** #tutorials
+
+**Project Description:** A place for tutorials relevant to D4D projects.
+
+**Project Leads:**
+* @alarcj
+
 
 ## Tutorials by Project
 * [Assemble](https://github.com/Data4Democracy/assemble)
