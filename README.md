@@ -25,3 +25,6 @@
 * [Clustering Twitter](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Clustering_twitter.ipynb)
  Clustering a user's followers by using KMeans.
 
+# Contributing
+If you want to contribute your own tutorials or have any coments please open up an [issue](https://github.com/Data4Democracy/tutorials/issues).
+This way we will avoid duplicates.
