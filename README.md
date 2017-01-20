@@ -26,5 +26,7 @@
  Clustering a user's followers by using KMeans.
 
 # Contributing
-If you want to contribute your own tutorials or have any coments please open up an [issue](https://github.com/Data4Democracy/tutorials/issues).
-This way we will avoid duplicates.
+* If you want to contribute your own tutorials or have any coments please open up an [issue](https://github.com/Data4Democracy/tutorials/issues).
+This way we can avoid duplicates.
+
+* If you you happen to have a cool idea for a tutorial or want to request a tutorial on a given subject/tool please feel free to open up an [issue](https://github.com/Data4Democracy/tutorials/issues) requesting it.
