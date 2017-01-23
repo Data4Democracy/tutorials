@@ -1,6 +1,6 @@
 # Tutorials
 
-**Slack:** #tutorials
+**Slack:** [#tutorials](https://datafordemocracy.slack.com/messages/tutorials/)
 
 **Project Description:** A place for tutorials relevant to D4D projects.
 
