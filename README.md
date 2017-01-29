@@ -8,11 +8,15 @@
 * @alarcj
 * @grichardson
 
-## Tutorials by Project
-* [Assemble](https://github.com/Data4Democracy/assemble)
- * [Twitter](https://github.com/Data4Democracy/tutorials/tree/master/Twitter)
-
 # List of Tutorials
+## External Resources
+* [External Learning Resources](https://github.com/Data4Democracy/tutorials/blob/master/External%20Resources/learning-resources.md)
+ Reference of resources that members of D4D have found useful in learning some of the languages, platforms, libraries, and methods applicable to D4D projects.
+
+## AWS
+* [AWS S3 using boto3](https://github.com/Data4Democracy/tutorials/blob/master/aws/AWS_Boto3_s3_intro.ipynb)
+ How to interact with S3 bucket from python using boto3 library.
+
 ## Twitter
 * [Intro Collecting Tweets](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Intro_Collecting_Tweets.ipynb)
  Getting started using the Twitter API for downloading Tweets.
@@ -24,6 +28,12 @@
  Simple word frequency analysis and tokenization.
 * [Clustering Twitter](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Clustering_twitter.ipynb)
  Clustering a user's followers by using KMeans.
+
+
+## Tutorials by Project
+* [Assemble](https://github.com/Data4Democracy/assemble)
+ * [Twitter](https://github.com/Data4Democracy/tutorials/tree/master/Twitter)
+
 
 ## git and GitHub
 * If you're new to using git and GitHub, [download git](https://git-scm.com) and create a GitHub account, then head over to our [GitHub playground repo](https://github.com/Data4Democracy/github-playground). Follow the instructions in the `README` to learn how it's done!
