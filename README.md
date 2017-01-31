@@ -28,7 +28,8 @@
  Simple word frequency analysis and tokenization.
 * [Clustering Twitter](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Clustering_twitter.ipynb)
  Clustering a user's followers by using KMeans.
-
+* [Building a Graph with Twitter](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Building_a_Graph_Twitter.ipynb)
+ Short tutorial on how to build a Graph of Twitter friends and followers using Networkx.
 
 ## Tutorials by Project
 * [Assemble](https://github.com/Data4Democracy/assemble)
