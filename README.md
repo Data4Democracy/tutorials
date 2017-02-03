@@ -39,7 +39,7 @@
 ## git and GitHub
 * If you're new to using git and GitHub, [download git](https://git-scm.com) and create a GitHub account, then head over to our [GitHub playground repo](https://github.com/Data4Democracy/github-playground). Follow the instructions in the `README` to learn how it's done!
 
-# Looking for Something ?
+# Looking for Something?
 * If you have some cool ideas for tutorial or want to see a tutorial that is not yet present please feel free to add it to our [Wish List](https://docs.google.com/spreadsheets/d/1o_821rVkR-8yz_dMBEN6Srl7tgXzrw-K8Nsqk-xkAmU/edit#gid=0)
 
 # Contributing
