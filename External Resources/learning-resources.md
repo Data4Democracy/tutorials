@@ -15,3 +15,5 @@ A simple reference of resources that members of D4D have found useful in learnin
 
 ## Git
 * Enki - https://www.enki.com - mobile app with 5 minute "workouts" for multiple programming topics
+* On Demand Training - https://services.github.com/on-demand/ - Github provided walkthrough 
+* On Demand Path - https://services.github.com/on-demand/path/ - Syllabus with Videos for walkthrough (for skipping around)
