@@ -26,6 +26,8 @@
  Great example on how to Stream (listen to live events) Tweets.
 * [Basic Twitter Analysis](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Basic_Twiter_Analysis.ipynb)
  Simple word frequency analysis and tokenization.
+* [Interactive Maps with Python's Folium](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Python_and_maps.ipynb)
+ Interactive Maps of Tweets (excuse the sample size for this tutorial).
 * [Clustering Twitter](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Clustering_twitter.ipynb)
  Clustering a user's followers by using KMeans.
 * [Building a Graph with Twitter](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Building_a_Graph_Twitter.ipynb)
@@ -33,8 +35,16 @@
 
 ## Tutorials by Project
 * [Assemble](https://github.com/Data4Democracy/assemble)
- * [Twitter](https://github.com/Data4Democracy/tutorials/tree/master/Twitter)
+ * [Twitter](https://github.com/Data4Democracy/tutorials/tree/master/Twitter) All of it!
 
+* [Internal Displacement](https://github.com/Data4Democracy/internal-displacement)
+ * [Interactive Maps with Python's Folium](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Python_and_maps.ipynb)
+
+* [USA Dashboard](https://github.com/Data4Democracy/usa-dashboard)
+ * [Interactive Maps with Python's Folium](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Python_and_maps.ipynb)
+
+* [Immigration Connect](https://github.com/Data4Democracy/immigration-connect)
+ * [Interactive Maps with Python's Folium](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Python_and_maps.ipynb)
 
 ## git and GitHub
 * If you're new to using git and GitHub, [download git](https://git-scm.com) and create a GitHub account, then head over to our [GitHub playground repo](https://github.com/Data4Democracy/github-playground). Follow the instructions in the `README` to learn how it's done!
