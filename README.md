@@ -5,8 +5,8 @@
 **Project Description:** A place for tutorials relevant to D4D projects.
 
 **Project Leads:**
-* @alarcj
-* @grichardson
+* [@alarcj](https://datafordemocracy.slack.com/messages/@alarcj/)
+* [@grichardson](https://datafordemocracy.slack.com/messages/@grichardson/)
 
 # List of Tutorials
 ## External Resources
