@@ -143,6 +143,6 @@ sites %>%
   ggtitle(paste('Page additions and changes found by the Wayback Machine on\nright-wing sites, by month', sep = ''))
 ```
 
-Hmm, looking at dat afrom these four sites, we can see the rise of activity (identified by the Wayback Machine scraper) during the 2016 primary season, the appearance of truthFeed around the time Trump clinched the GOP nomination, a fall off in activity on rickwells.com and therebel.media after the RNC, and the most activity from Breitbart and Truthfeed after the election. Curious...
+Hmm, looking at data from these four sites, we can see the rise of activity (identified by the Wayback Machine scraper) during the 2016 primary season, the appearance of truthFeed around the time Trump clinched the GOP nomination, a fall off in activity on rickwells.com and therebel.media after the RNC, and the most activity from Breitbart and Truthfeed after the election. Curious...
 
 That's just a few things you can do with this data. For other ideas, see [my blog post](http://pushpullfork.com/2017/02/misinformation-trump-administration/). Have fun!
