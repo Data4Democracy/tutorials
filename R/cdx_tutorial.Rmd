@@ -1,0 +1,148 @@
+---
+title: "Analyzing website history with R and the Wayback Machine API"
+output:
+  html_document: default
+---
+
+One way to track a disinformation campaign is to get a space-station-level view of the change history of a number of websites involved in the campaign. When sites appear, rise to prominence, or start adding and changing high volumes of content at key historical moments, it tells us we should look more closely at those sites at those times. It can also help direct our attention to possible associations between sites, including common ownership, common ideology, common source material, or bot activity.
+
+The Internet Archive Wayback Machine's API gives us a great tool for investigating those changes. It doesn't catch *every* change on every site. But when looking at weekly/monthly time resolutions for frequently visited (and thus frequently scraped) sites, we can get a good general idea of where the major activity is happening.
+
+For an example of the kind of analysis you can do with this data, see my blog post, ['(Mis)information and the Trump administration'](http://pushpullfork.com/2017/02/misinformation-trump-administration/). 
+
+In what follows, I'll walk through how to download, clean, and analyze this data using R and TidyVerse data analysis tools.
+
+## Download and clean data
+
+First we need to load a few libraries.
+
+```{r}
+library(jsonlite)
+library(tidyverse)
+library(lubridate)
+library(magrittr)
+```
+
+Downloading the data from the Wayback Machine API is super-simple. To download the change log for TheRebel.media (a relatively small digest, so good for a tutorial), use the following single line.
+
+```{r}
+therebel <- fromJSON('http://web.archive.org/cdx/search/cdx?url=therebel.media&matchType=domain&output=json&collapse=digest')
+```
+
+This line queries the Wayback Machine CDX Server API for snapshot records pertaining to ```therebel.media```. the ```matchType=domain``` parameter asks it for everything on the domain (including subdomains, which is good for sites with mobile versions on their own subdomains). ```output=json``` surprisingly enough outputs the data in json format (though pretty flat, and thus very easy to parse with tidy data tools). ```collapse=digest``` will collapse all adjacent versions of a page with the same content into one entry. This is helpful when a new snapshot is created, but not every page changes. Only the page *changes* found by the crawler will be included in the result.
+
+For a complete list of query parameters and options, see their [GitHub documentation](https://github.com/internetarchive/wayback/tree/master/wayback-cdx-server).
+
+To get the downloaded JSON into a tibble (tidy data frame), use the following.
+
+```{r}
+sites <- therebel[-1,] %>%
+  as_tibble() %>%
+  select(urlkey = 1, timestamp = 2, original = 3, mimetype = 4, statuscode = 5, digest = 6, length = 7) %>%
+  filter(statuscode == '200') %>%
+  mutate(date = ymd(substr(timestamp, 1, 8)))
+```
+
+This will eliminate the first row (containing the header, but it isn't parsed as such by fromJSON), name the columns appropriately, filter out redirects and broken links, and make a lubridate-friendly date stamp, making it much easier to analyze changes over time.
+
+Let's say we want to add a couple other sites to the analysis. We simply call them the same way...
+
+```{r}
+rickwells <- fromJSON('http://web.archive.org/cdx/search/cdx?url=rickwells.us&matchType=domain&output=json&collapse=digest')
+truthfeed <- fromJSON('http://web.archive.org/cdx/search/cdx?url=truthfeed.com&matchType=domain&output=json&collapse=digest')
+breitbart <- fromJSON('http://web.archive.org/cdx/search/cdx?url=breitbart.com&matchType=domain&output=json&collapse=digest')
+```
+
+Then join them together.
+
+```{r}
+sites <- truthfeed[-1,] %>%
+  as_tibble() %>%
+  select(urlkey = 1, timestamp = 2, original = 3, mimetype = 4, statuscode = 5, digest = 6, length = 7) %>%
+  filter(statuscode == '200') %>%
+  mutate(site = 'truthfeed.com') %>%
+  full_join(breitbart[-1,] %>%
+              as_tibble() %>%
+              select(urlkey = 1, timestamp = 2, original = 3, mimetype = 4, statuscode = 5, digest = 6, length = 7) %>%
+              filter(statuscode == '200') %>%
+              mutate(site = 'breitbart.com')) %>%
+  full_join(rickwells[-1,] %>%
+              as_tibble() %>%
+              select(urlkey = 1, timestamp = 2, original = 3, mimetype = 4, statuscode = 5, digest = 6, length = 7) %>%
+              filter(statuscode == '200') %>%
+              mutate(site = 'rickwells.com')) %>%
+  full_join(therebel[-1,] %>%
+              as_tibble() %>%
+              select(urlkey = 1, timestamp = 2, original = 3, mimetype = 4, statuscode = 5, digest = 6, length = 7) %>%
+              filter(statuscode == '200') %>%
+              mutate(site = 'therebel.media')) %>%
+  mutate(date = ymd(substr(timestamp, 1, 8)))
+```
+
+Note that we can save the date processing for last and do it all at once. Also note the use of ```mutate()``` to add a ```site``` field to the data frame, identifying the source of each data set. (That's not strictly necessary, given the data CDX gives us, but it's cleaner and easier to work with.)
+
+Now we can do some interesting visualizations.
+
+## Visualizations
+
+Let's look at the annual additions and changes to these sites over the course of their history. (Note that Wayback Machine tracks additions and changes, but does not provide ready information about page deletions.)
+
+```{r}
+sites %>%
+  mutate(time_floor = floor_date(date, unit = "1 year")) %>%
+  group_by(time_floor, site) %>%
+  summarize(count = n()) %>%
+  ggplot(aes(time_floor, count, color = site)) +
+  geom_line() +
+  xlab('Date') +
+  ylab('Pages added or changed') +
+  ggtitle(paste('Page additions and changes found by the Wayback Machine on\nright-wing sites, by year', sep = ''))
+```
+
+We can also do this by month by changing the ```time_floor``` unit.
+
+```{r}
+sites %>%
+  mutate(time_floor = floor_date(date, unit = "1 month")) %>%
+  group_by(time_floor, site) %>%
+  summarize(count = n()) %>%
+  ggplot(aes(time_floor, count, color = site)) +
+  geom_line() +
+  xlab('Date') +
+  ylab('Pages added or changed') +
+  ggtitle(paste('Page additions and changes found by the Wayback Machine on\nright-wing sites, by month', sep = ''))
+```
+
+And we can hone in on a date range by setting a filter.
+
+```{r}
+sites %>%
+  filter(date >= '2015-01-01') %>%
+  mutate(time_floor = floor_date(date, unit = "1 month")) %>%
+  group_by(time_floor, site) %>%
+  summarize(count = n()) %>%
+  ggplot(aes(time_floor, count, color = site)) +
+  geom_line() +
+  xlab('Date') +
+  ylab('Pages added or changed') +
+  ggtitle(paste('Page additions and changes found by the Wayback Machine on\nright-wing sites, by month', sep = ''))
+```
+
+If instead of comparing sites, we want to see aggregate totals, we can change ```geom_line()``` to ```geom_col()``` and ```color``` to ```fill```.
+
+```{r}
+sites %>%
+  filter(date >= '2015-01-01') %>%
+  mutate(time_floor = floor_date(date, unit = "1 month")) %>%
+  group_by(time_floor, site) %>%
+  summarize(count = n()) %>%
+  ggplot(aes(time_floor, count, fill = site)) +
+  geom_col() +
+  xlab('Date') +
+  ylab('Pages added or changed') +
+  ggtitle(paste('Page additions and changes found by the Wayback Machine on\nright-wing sites, by month', sep = ''))
+```
+
+Hmm, looking at data from these four sites, we can see the rise of activity (identified by the Wayback Machine scraper) during the 2016 primary season, the appearance of truthFeed around the time Trump clinched the GOP nomination, a fall off in activity on rickwells.com and therebel.media after the RNC, and the most activity from Breitbart and Truthfeed after the election. Curious...
+
+That's just a few things you can do with this data. For other ideas, see [my blog post](http://pushpullfork.com/2017/02/misinformation-trump-administration/). Have fun!
