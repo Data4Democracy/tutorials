@@ -1,0 +1,27 @@
+version: "3"
+networks:
+    postgresnet:
+
+services:
+    postgresql:  
+        image: postgres:9.6 
+        hostname: postgresql          
+        container_name: postgresql
+        environment:                                                            
+            - POSTGRES_USER=user
+            - POSTGRES_PASSWORD=pass
+            - POSTGRES_DB=mydatabase    
+        networks:
+            - postgresnet
+
+    app:
+        build: .
+        hostname: app
+        container_name: app
+        command: sleep 1h
+        volumes:
+            - .:/app
+        depends_on:
+            - postgresql
+        networks:                                                               
+            - postgresnet                                                           
