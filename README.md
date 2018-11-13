@@ -17,6 +17,8 @@
 * [AWS S3 using boto3](https://github.com/Data4Democracy/tutorials/blob/master/aws/AWS_Boto3_s3_intro.ipynb)
  How to interact with S3 bucket from python using boto3 library.
 
+        - helpful tutorial for setting up first IAM user and adding permissions before beginning tutorial above: (https://linuxacademy.com/howtoguides/posts/show/topic/14209-automating-aws-with-python-and-boto3)
+
 ## Twitter
 * [Intro Collecting Tweets](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Intro_Collecting_Tweets.ipynb)
  Getting started using the Twitter API for downloading Tweets.
