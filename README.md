@@ -35,16 +35,13 @@
 
 ## Tutorials by Project
 * [Assemble](https://github.com/Data4Democracy/assemble)
- * [Twitter](https://github.com/Data4Democracy/tutorials/tree/master/Twitter) All of it!
-
+    * [Twitter](https://github.com/Data4Democracy/tutorials/tree/master/Twitter) All of it!
 * [Internal Displacement](https://github.com/Data4Democracy/internal-displacement)
- * [Interactive Maps with Python's Folium](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Python_and_maps.ipynb)
-
+    * [Interactive Maps with Python's Folium](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Python_and_maps.ipynb)
 * [USA Dashboard](https://github.com/Data4Democracy/usa-dashboard)
- * [Interactive Maps with Python's Folium](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Python_and_maps.ipynb)
-
+    * [Interactive Maps with Python's Folium](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Python_and_maps.ipynb)
 * [Immigration Connect](https://github.com/Data4Democracy/immigration-connect)
- * [Interactive Maps with Python's Folium](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Python_and_maps.ipynb)
+    * [Interactive Maps with Python's Folium](https://github.com/Data4Democracy/tutorials/blob/master/Twitter/Python_and_maps.ipynb)
 
 ## git and GitHub
 * If you're new to using git and GitHub, [download git](https://git-scm.com) and create a GitHub account, then head over to our [GitHub playground repo](https://github.com/Data4Democracy/github-playground). Follow the instructions in the `README` to learn how it's done!
